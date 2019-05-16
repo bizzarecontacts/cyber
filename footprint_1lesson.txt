@@ -1,0 +1,82 @@
+ דוד דביר.
+
+*Target or destination – Can be small or as large as a state.
+*Intelligence gathering/Reconnaissance. (This is where foot printing kicks in). 
+              - Pinpointing - Targeting a specific device in large networks.
+              - Business structure – Who is likely to be vulnerable ( a secretary or an IT employee ? )
+              - Social Information – Means what it says.
+
+ 
+Useful information ; 
+          domain name
+          auth details
+          IDS
+          routing tables
+          users/groups
+          IP/VPN/Websites
+          ACL
+          Email
+
+
+Search Engines That were going to use!
+
+	http://google.com/advanced_search
+	http://shodan.io – This is where you will find something to attack [ pip install shodan via kali ]
+	http://searchdns.netcraft.com ( Getting sub-domains of a main domain ).
+	http://censys.io ( further information that adds to shodan )
+	http://pastebin.com ( Find anything and everything ).
+	http://whois.net / 		dmitry -i http://ynet.co.il
+
+		GHDB!!!!!!!!!!
+		
+DORKS ( That we should remember ) ; EXAMPLES
+		site:
+		inurl:http://google.com
+		related:auth
+		intext:password
+		link:phpmy
+		intitle:username
+		filetype:password.xt
+
+WEBSITE FOOTPRINTING ;;;; SPIDER-CRWALER ;;;; THINGS TO KNOW AND UNDERSTAND.
+		os
+		directories
+		scripting platforms
+		versions
+		
+VIA KALI LINUX ;; BLACKWIDOW
+		~apt update
+		~git clone http://github.com/1N3/blackwidow.git
+		
+		
+SITE MIRRORING ;;;;
+		HTTRACK : Downloads a website COMPLETELY.
+		VIA KALI ;; httrack http://example.com
+		
+		
+####################################################################################################
+
+MALTEGO ( BUILTIN WITHIN KALI )
+		
+		RECON-NG  > WORKSPACES ADD 
+				add domains example.com
+				show modules
+					load interesting_files // or any module
+					set DOWNLOAD False
+					set SOURCE example.com
+					set PROTOCOL https
+					set PORT  443/80/3389/22 etc.
+							run
+							
+			
+	
+	HOME-WORK!!!
+	
+READ ABOUT FORKA 
+		
+	
+	
+
+
+
+
