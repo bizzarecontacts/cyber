@@ -1,0 +1,137 @@
+דוד דביר
+
+Network Scanning
+
+
+Knowing the services running will aid us in understanding in which attack vector to use.
+Knowing the service will help us narrow down a specific exploit or attack. The bigger the service the harder it is to defend it.
+
+Termonillogy : 
+
+		HOSTS
+		FINGERPRINT ( telnet as an example has a motd )
+		MAC-ADDRESS ( knowing the vendor as an example - SUPPLY CHAIN ATTACK  ) 
+		PORTS ( MOST SERVICES ARE UNCHANGED )
+		
+		
+=======================================NMAP=================================================================
+
+
+HPing3 -1 - structures tcp/ip to anlayise the network for further information. It enables the sending of several ICMP requests
+that will aid us in knowing the network, It also supports other protocols.
+
+BASIC COMMANDS 
+
+			HPing3 -1 *Target*
+			Hping3 -1 10.0.0.x --ran-dest -i eth0 --fast ( Scans the whole network ).
+			Hping3 --traceroute -v -1 8.8.8.8 --tr-stop
+			
+			
+
+In normal scan, NMAP will show 1,000 of the most used ports. This is a TCP scan that uses three way hand-shake.
+
+TCP FLAGS we should know.
+
+		URG : tells us that it is urgent and needs to be porccessed instantly.
+		PSH : Incase of a missing packet, This asks for a push in a specific order
+		SYN : Syncing\
+		ACK : Confirms the data has reached.
+		RST : Reset the whole session.
+		sS  : Allow us a silent request to avoid firewalls by avoiding AK!!! This is also faster ( Old and un-used )
+		sU  : Scan UDP ports only. UDP unlike TCP does not send AK, However the OS can and does.
+		O   : ( O not zero ) Identify the OS. As each OS responds with a different finger-print.
+		Pn  : Incase a firewall exists then this will prevent nmap from sending the intial ping.
+		
+		ATTACHED FILE : NMAP_QUICK.MP4
+		
+		=========================SCANS======================
+		
+There are 3 types of scans that helps us by-pass AV or Firewalls ( IDS )
+Most of the IDS block scanning attempts for security reasons - In that they continuously search for SYN messages in order to detect them.
+These scans help us learn how the firewall works!
+
+			fin scan - sF = If the machine is open, an RST should come back.
+			null scan - sN = All of the flags are off! - If the port is open we wont get any response. If port is closed, an RST comes back.
+			xmas scan - sX = URG + FIN + PUSH combined - If port is open, an RST comes back. If port is filtered - No response. If port closed, a FIN comes back.
+			
+Idle Scan.
+
+	Topology 
+		H = Attacker
+		V = Victim
+		Z = Zombie
+		
+		1. Syn to Zombie.
+		2. Fin from zombie ( say Its a printer ) (get the IPID - ex : 600 )
+		3. syn to victim from zombie 
+		4. If the port is open target sends syn-ack to zombie
+			   and zombie sends back RST ( IPID + 1 ) 601
+			   If the port is closed the target doesnt send syn-ack to zombie
+			   and zombie doesnt back RST ( IPID +0) 600.
+		5. syn to zombie
+		6. fin from zombie (get the IPID ) 600
+		7.if IPID-2= old IPID the port is open
+		  if IPID-1= old IPID the port is closed
+			   
+			   
+			 Syntax to perform Idle scan = nmmap -sI <zombie> <target> -p 56
+			 
+So let's say we arrived at a new network of a random company. How the hell do we even get the zombie's IP???? Hah! 
+
+
+nmap --script ipidseq 10.0.7.14 -p
+If Incremental = Were good to go. If anything else, Keep searching.
+
+
+
+NSE - Nmap Script Engine
+
+
+There are actually scripts built that are specificly written for nmap. They are written in LUA.
+We can use NSE with the following command ; --script "name of script"
+
+NSE falls under few categories:
+
+		auth ( often checks auth or even bypasses them )
+		broadcast ( an example would be the ARP request )
+		brute force ( we know that this is )
+		default ( anything )
+		discovery ( discover data )
+		exploit ( an example would be DOS attack )
+		malware ( can check if the target has been infected )
+		external ( uses other websites to gain data ( an example would be http://whatismyip.com )
+		vuln ( can check if the target is compromised ) 
+		
+We can also use all of these combined!  nmap 10.0.7.14 -p --script *
+
+
+BYPASSING FIREWALLS FULLY
+
+-t - time delay for the scan
+-d - decoy - sending on the behalf of everyone
+-f - fragmentation - the smaller the packet, the harder for the firewall to detect.
+-a - Does everything to find everything and if it thinks theres a firewall he will use NSE.
+
+Here's a situation, we scanned the target and got a bunch of ports that are opened, But who said port 80 is actually HTTP? We can use -sV to verify!.
+
+Home work : 
+
+Setup an SSH server but with different port. Test if you can verify if it is.
+Get the banner manually! hint : netcat
+Scan your home, Give a foot massage to your wife using nmap.|
+
+
+
+Extra tools for scanning
+
+zenmap, netdiscover 10.0.0.0/16 , p0f , masscan.
+
+					
+
+
+
+
+
+
+
+
