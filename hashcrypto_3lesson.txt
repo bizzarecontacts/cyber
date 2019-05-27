@@ -1,0 +1,66 @@
+Password Cracking 
+
+Some introduction :)
+
+
+
+There is a difference between passwords and hashes. The more complicated the password, The harder it is to crack it. 
+Hash is an equisized identifer calculated by applying special mathematical function(s) on arbitrarily sized values.
+Since these functions are one-way, they protect any transmitted/stored data from being tampered with.
+
+
+There are 4 ways to crack a password ;
+
+	a, Guessing  - Social information/Personal that may hint a password ( Cat's name etc...)
+	
+	b, Phishing  - Pretending something that it isn't to steal a password 
+	
+	c, Dictionary Attack - A file consisted with the most common passwords used today.
+	
+	d, Cracking - Full brute force - Try everything until you get a hit.
+	
+	
+	
+HASH TYPES
+
+md 5 - 128 bit. Considered vulnerable since 2013.
+sha1 - 160 bit. Considered vulnerable since 2017
+sha256 - used mainly in SSH and SSL
+NTLM - reencoded text hashed with MD4
+NetNTLM - an improved version of NTLM, which uses salts and time stamps to prevent PTH.
+Blowfish - Well, its a real cipher and not a hash so much. This is for linux systems !!
+	
+    
+SITES TO KNOW
+
+HASHKILLER
+KORELOGIC
+
+################
+
+John The Ripper : 
+
+cat /etc/shadow/ = blowfish > John The Ripper.
+
+unshadow /etc/passwd /etc/shadow > crackme
+john crackme
+
+additional command 
+
+	john crackme --wordlist <"file with the passwords
+	john crackme --wordlist /usr/share/wordlists/rockyou.txt
+	rar2john "test".rar ( crack winrar passwords ).
+	
+
+GPU SUPPORTED CRACKERS
+
+JamboJohn - via github
+Hashcat
+
+
+Create a wordlist
+
+crunch [min] [max] [chars] 
+crunch 10 10 0123456789 -t 05%%%%%%%%
+cewl
+cupp
