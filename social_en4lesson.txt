@@ -1,0 +1,41 @@
+Social Engineering Introduction
+
+מונח מקצועי המתאר ביצוע חברתי על מנת לקבל מידע או גישה ביתר קלות
+Using social tools & manipulations to extract data with ease. 
+
+The purpose of social-engineering is to get several things ;
+		.information gathering - Lying, Pretending to be someone else.
+		.manipulation on groups of people/individuals to steal money.
+		.system access
+Attack Vector1: SE. Attacking a Computer, Network Equipment, Protocols
+Attack Vector2: Phone Based. Fake SMS/Call
+Attack Vector3: Physically based
+The art of social-engineering is to not even use a computer.!
+
+
+terminology
+
+Phishing ( Pretending ) 
+Vishing ( Voice Phishing )
+Baiting ( Means what it says )
+
+Bonus * Read about Hack5 / Rubber-Ducky 
+http://recieve-smss.com
+http://burnerapp.com
+http://spoofcard.com 
+
+Certificate 
+( such as https* ) Identifies 2 things, First it makes sure it is who it claims to be, and second , The bandwidth is encrypted. 
+
+we will be using setoolkit as intro.
+
+HOMEWORK
+
+CREATE PHISHING WEBSITE
+MAKE THE WEBSITE MORE CREDIBLE
+
+[[[[[attachedfile]]]]
+
+socialfish!!!
+
+
