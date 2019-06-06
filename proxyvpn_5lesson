@@ -1,0 +1,63 @@
+Web Anonymous
+
+פרוקסי  רתים פרטיים ווירטואלים
+
+There are many ways to disguise our identity
+
+#################################
+Proxy 
+#################################
+
+In computer networks, a proxy server is a server (a computer system or an application) that acts as an intermediary for requests from clients.
+They are NOT encrypted. There are 4 main usages of Proxies ;
+
+   .Data Security
+   .Anonymity 
+   .Filtering
+   .Intersect
+   
+LIST OF KNOWN PROXIES : 
+
+https://www.kproxy.com/
+https://proxy.toolur.com/
+https://www.hidemyass.com/proxy
+https://www.proxysite.com/
+https://hide.me/
+https://hidester.com/proxy/
+http://ipinfo.io - Compare
+
+
+
+##################################
+VPN 
+##################################
+
+Virtual private network  extends a private network across a public networkץ
+It enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network ( Tunnel )
+In most cases tunnel enables the passage of most bandwidth. 
+ 
+Difference between them ?  One is un-encrypted plain text, and the second is encrypted. 
+Proxy works on the Application Layer ONLY ( OSI MODEL ).
+VPN works and encrypts ALL 7 layers ( OSI MODEL ).
+
+LIST OF KNOWN VPN : 
+
+https://www.tunnelbear.com/
+https://www.cyberghostvpn.com
+https://nordvpn.com/
+
+*OpenVPN
+
+ OpenVPN requires a configuration file with which we can access any VPN server across the globe.
+
+##################################
+Dark Net | ToR 
+##################################
+
+ProxyChain : Multiple Hops.
+Usage : /etc/proxychains.conf 
+AnonSurf = Automates everything.
+There is a script called "Lazy Script" - This script installs anonsurf.
+
+
+ 
