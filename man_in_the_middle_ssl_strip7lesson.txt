@@ -1,0 +1,88 @@
+David Dvir // Nano // ParrotOS
+##############################
+
+Un-realated home-work : Read about WireShark Promiscuous mode Detection.
+
+MAN IN THE MIDDLE
+
+This a  is position where an attacker trasnfers data through him. MITM can work either on wlan or lan, However it is only possible if we are part of the network
+
+   States of Attack : 
+	Local to Local
+	Local to Remote
+	
+   The manipulations are as follows : 
+
+	-Data Theft
+	-Data change
+	-Denial of Service
+
+   First Method ######
+
+        ARP POISIONING - ( Layer 2 ) 
+		*ARP has 2 problems ; 
+			1. It has "Generious ARP" - No time period checks
+			2. It doesn't check for integrity  
+			
+   Scenario : 
+
+C and the Switch  are connected, C requests for google.com, Switch returns :  google.com doesn't exit, so it asks the router. Does C know the router's ip? Yes
+	Router sends google.com to the Switch, The switch knows the MAC of C so C can now access google.com
+	ARP Poisoning means that we constantly tell the switch "I AM C". 
+	* Make sure Port fowarding is enabled. (  By default it is disabled ).
+        # Inject : echo 1 > /proc/sys/net/ipv4/ip_forward
+	
+	Usage : arpspoof -i wlan0 -t 10.0.4.31 10.0.0.138 -r 
+				     
+
+We can also  do MAC FLAG since switches have a CAM table which stores information of MAC addresses through pyhsical ports.
+Therefore we can brute-force this table with all MACS until either the switch duplicates or crashes. When a switch crashes, It transforms to a HUB.
+
+   Second Method ######
+      DNS POISIONING
+        [DNS Table : 
+            A > NR > IPv4
+            AAAA> NR > Ipv6
+            PTR > NR >- Ipv4/6 > Name
+            MX > Mail > IP]
+
+This specific attack requires a file called "hosts", This file exists both in Linux/Windows. 
+
+    Usage : dnsspoof -i wlan0 --f [hosts] 
+     Let's create a hosts file : Nano fake.hosts 
+
+        10.0.0.32 www - Every bloody website our target enters will be forwarded to us ( 10.0.0.32 ).
+        
+Extra tools we can use in addition : 
+
+1. urlsnarf - displays the web addresses including login forms the target visits ( not effective as most websites are https )
+2. filesnarf - grab files
+3. webspy - displays the website he visits
+4. dsniff - data sniffer, sniff everything
+5. Driftnet - displays images 
+       
+       
+        SSL STRIP!
+            Requirements : 
+                  ip fowarding 
+                  apr spoofing  
+                  iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
+                  sslstrip -l 1000
+                 
+SSL STRIP defense a.k.a HSTS prevents this method.
+
+Man in The Middle Auto
+
+    #apt-get install bettercap
+    
+    
+HOMEWORK : WRITE ABOUT IPTABLES, READ ABOUT ICMP REDIRECT, IRDP MENGLING
+
+ATTACHED FILE : IPTABLES.DOCX
+
+
+
+    
+                  
+
+              
